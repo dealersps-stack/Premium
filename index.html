@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honda Poster Studio</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hondaRed: '#f31226',
+                        hondaDark: '#0d0f12',
+                        hondaCard: '#161920',
+                        hondaBorder: '#232731',
+                        hondaGray: '#8a92a6'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-hondaDark text-white font-sans antialiased flex h-screen overflow-hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="w-64 bg-hondaDark border-r border-hondaBorder flex flex-col justify-between hidden md:flex">
+        <div>
+            <!-- Logo -->
+            <div class="p-6 flex items-center space-x-2 border-b border-hondaBorder/50">
+                <div class="text-hondaRed font-black text-xl tracking-wider flex items-center gap-2">
+                    <span class="bg-hondaRed text-white px-2 py-0.5 rounded text-sm">HONDA</span>
+                    <span class="text-white text-xs uppercase tracking-widest font-semibold">Poster Studio</span>
+                </div>
+            </div>
+
+            <!-- Navigasi -->
+            <nav class="p-4 space-y-1">
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl bg-hondaRed text-white font-medium shadow-lg shadow-hondaRed/30">
+                    <i class="fa-solid fa-house w-5"></i>
+                    <span>Beranda</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-hondaGray hover:text-white hover:bg-hondaCard transition">
+                    <i class="fa-solid fa-wand-magic-sparkles w-5"></i>
+                    <span>Studio Desain</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-hondaGray hover:text-white hover:bg-hondaCard transition">
+                    <i class="fa-solid fa-robot w-5"></i>
+                    <span>Generator Prompt AI</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-hondaGray hover:text-white hover:bg-hondaCard transition">
+                    <i class="fa-solid fa-layer-group w-5"></i>
+                    <span>Template</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-hondaGray hover:text-white hover:bg-hondaCard transition">
+                    <i class="fa-solid fa-folder w-5"></i>
+                    <span>Proyek Saya</span>
+                </a>
+                <a href="#" class="flex items-center space-x-3 px-4 py-3 rounded-xl text-hondaGray hover:text-white hover:bg-hondaCard transition">
+                    <i class="fa-solid fa-gear w-5"></i>
+                    <span>Pengaturan</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Upgrade Card di Sidebar -->
+        <div class="p-4 m-4 bg-gradient-to-br from-hondaCard to-[#221820] border border-hondaBorder rounded-2xl relative overflow-hidden">
+            <div class="absolute -right-4 -bottom-4 text-hondaRed/10 text-6xl">
+                <i class="fa-solid fa-crown"></i>
+            </div>
+            <p class="text-xs text-hondaGray mb-2">Upgrade ke Premium</p>
+            <p class="text-xs font-semibold mb-3">Dapatkan fitur lengkap dan akses ke semua template eksklusif.</p>
+            <button class="w-full py-2 bg-hondaRed hover:bg-red-700 text-white rounded-lg text-xs font-bold shadow-md transition">
+                Upgrade Sekarang
+            </button>
+        </div>
+    </aside>
+
+    <!-- KONTEN UTAMA -->
+    <main class="flex-1 flex flex-col h-screen overflow-y-auto">
+        
+        <!-- Header Topbar -->
+        <header class="h-16 border-b border-hondaBorder px-6 flex items-center justify-between bg-hondaDark/80 backdrop-blur sticky top-0 z-10">
+            <div class="flex items-center space-x-4 md:hidden">
+                <button class="text-hondaGray hover:text-white"><i class="fa-solid fa-bars text-xl"></i></button>
+                <span class="font-bold text-sm">Honda Poster Studio</span>
+            </div>
+            <div class="hidden md:block text-sm text-hondaGray">
+                <span>Halaman Utama / Dashboard</span>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="w-9 h-9 rounded-full bg-hondaCard border border-hondaBorder flex items-center justify-center text-hondaGray hover:text-white">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <div class="flex items-center space-x-3 pl-2 border-l border-hondaBorder">
+                    <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-hondaRed to-orange-500 flex items-center justify-center font-bold text-sm">
+                        HC
+                    </div>
+                    <div class="hidden sm:block text-left">
+                        <p class="text-xs font-bold leading-tight">Honda Creator</p>
+                        <p class="text-[10px] text-amber-400 flex items-center gap-1"><i class="fa-solid fa-crown text-[9px]"></i> Premium User</p>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Body -->
+        <div class="p-6 md:p-8 space-y-8 max-w-7xl mx-auto w-full">
+            
+            <!-- Banner Utama (Hero Section) -->
+            <div class="relative bg-gradient-to-r from-[#181216] via-[#1f1519] to-hondaCard border border-hondaBorder rounded-3xl p-8 overflow-hidden flex flex-col md:flex-row items-center justify-between shadow-2xl">
+                <div class="absolute right-0 top-0 bottom-0 w-1/2 opacity-40 md:opacity-90 pointer-events-none flex items-center justify-end overflow-hidden">
+                    <!-- Ilustrasi Motor / Background Banner -->
+                    <div class="absolute inset-0 bg-gradient-to-l from-transparent via-hondaDark/60 to-hondaDark z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=80" alt="Motor Honda" class="h-full object-cover object-center transform scale-110">
+                </div>
+
+                <div class="z-20 max-w-xl space-y-4">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-hondaRed/10 border border-hondaRed/30 text-hondaRed text-xs font-semibold">
+                        <i class="fa-solid fa-heart">></i> One HEART.
+                    </div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-tight">
+                        Selamat Datang di <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-white to-hondaGray">Honda Poster Studio</span>
+                    </h1>
+                    <p class="text-sm text-hondaGray leading-relaxed">
+                        Buat poster promosi motor Honda yang menarik, profesional dan siap untuk berbagai platform.
+                    </p>
+                    <div class="flex flex-wrap items-center gap-4 pt-2">
+                        <button class="px-6 py-3 bg-hondaRed hover:bg-red-700 text-white font-bold rounded-xl text-sm shadow-lg shadow-hondaRed/30 flex items-center gap-2 transition">
+                            <i class="fa-solid fa-plus"></i> Buat Poster Baru
+                        </button>
+                        <button class="px-6 py-3 bg-hondaCard hover:bg-hondaBorder text-white font-semibold rounded-xl text-sm border border-hondaBorder transition">
+                            Lihat Tutorial
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Menu Cepat: Mulai dari sini -->
+            <div>
+                <h2 class="text-base font-bold mb-4">Mulai dari sini</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Card 1 -->
+                    <div class="bg-hondaCard border border-hondaBorder hover:border-hondaRed/50 rounded-2xl p-5 transition group cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-hondaRed/10 text-hondaRed flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-image"></i>
+                            </div>
+                            <h3 class="font-bold text-sm mb-1">Desain Poster</h3>
+                            <p class="text-xs text-hondaGray leading-relaxed">Buat poster dari awal dengan pengaturan lengkap.</p>
+                        </div>
+                        <div class="mt-4 text-xs font-bold text-hondaRed flex items-center gap-1 group-hover:translate-x-1 transition">
+                            Mulai <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                    <!-- Card 2 -->
+                    <div class="bg-hondaCard border border-hondaBorder hover:border-hondaRed/50 rounded-2xl p-5 transition group cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-hondaRed/10 text-hondaRed flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <h3 class="font-bold text-sm mb-1">Generator Prompt AI</h3>
+                            <p class="text-xs text-hondaGray leading-relaxed">Dapatkan ide & prompt kreatif untuk promosi motor.</p>
+                        </div>
+                        <div class="mt-4 text-xs font-bold text-hondaRed flex items-center gap-1 group-hover:translate-x-1 transition">
+                            Mulai <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                    <!-- Card 3 -->
+                    <div class="bg-hondaCard border border-hondaBorder hover:border-hondaRed/50 rounded-2xl p-5 transition group cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-hondaRed/10 text-hondaRed flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-layer-group"></i>
+                            </div>
+                            <h3 class="font-bold text-sm mb-1">Template</h3>
+                            <p class="text-xs text-hondaGray leading-relaxed">Pilih dari berbagai template profesional.</p>
+                        </div>
+                        <div class="mt-4 text-xs font-bold text-hondaRed flex items-center gap-1 group-hover:translate-x-1 transition">
+                            Lihat Template <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                    <!-- Card 4 -->
+                    <div class="bg-hondaCard border border-hondaBorder hover:border-hondaRed/50 rounded-2xl p-5 transition group cursor-pointer flex flex-col justify-between">
+                        <div>
+                            <div class="w-10 h-10 rounded-xl bg-hondaRed/10 text-hondaRed flex items-center justify-center text-lg mb-4 group-hover:scale-110 transition">
+                                <i class="fa-solid fa-cloud-arrow-up"></i>
+                            </div>
+                            <h3 class="font-bold text-sm mb-1">Upload Motor</h3>
+                            <p class="text-xs text-hondaGray leading-relaxed"> Gunakan foto motor sendiri untuk desain yang lebih personal.</p>
+                        </div>
+                        <div class="mt-4 text-xs font-bold text-hondaRed flex items-center gap-1 group-hover:translate-x-1 transition">
+                            Upload <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Proyek Terakhir -->
+            <div>
+                <div class="flex items-center justify-between mb-4">
+                    <h2 class="text-base font-bold">Proyek Terakhir</h2>
+                    <a href="#" class="text-xs text-hondaGray hover:text-white transition">Lihat Semua →</a>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Proyek 1 -->
+                    <div class="bg-hondaCard border border-hondaBorder rounded-2xl overflow-hidden group hover:border-hondaRed/40 transition">
+                        <div class="h-36 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?auto=format&fit=crop&w=500&q=80" alt="PCX 160" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <div class="absolute top-2 right-2 bg-black/60 backdrop-blur px-2 py-1 rounded text-[10px] font-semibold">9:16</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-sm truncate">PCX 160 - Modern Lifestyle</h4>
+                            <p class="text-[11px] text-hondaGray mt-1">1 jam yang lalu</p>
+                        </div>
+                    </div>
+                    <!-- Proyek 2 -->
+                    <div class="bg-hondaCard border border-hondaBorder rounded-2xl overflow-hidden group hover:border-hondaRed/40 transition">
+                        <div class="h-36 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1609630875172-23c21e905814?auto=format&fit=crop&w=500&q=80" alt="Beat Street" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <div class="absolute top-2 right-2 bg-black/60 backdrop-blur px-2 py-1 rounded text-[10px] font-semibold">1:1</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-sm truncate">Beat Street - Urban Style</h4>
+                            <p class="text-[11px] text-hondaGray mt-1">3 jam yang lalu</p>
+                        </div>
+                    </div>
+                    <!-- Proyek 3 -->
+                    <div class="bg-hondaCard border border-hondaBorder rounded-2xl overflow-hidden group hover:border-hondaRed/40 transition">
+                        <div class="h-36 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=500&q=80" alt="Scoopy" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <div class="absolute top-2 right-2 bg-black/60 backdrop-blur px-2 py-1 rounded text-[10px] font-semibold">4:5</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-sm truncate">Scoopy - Fashion & Fun</h4>
+                            <p class="text-[11px] text-hondaGray mt-1">5 jam yang lalu</p>
+                        </div>
+                    </div>
+                    <!-- Proyek 4 -->
+                    <div class="bg-hondaCard border border-hondaBorder rounded-2xl overflow-hidden group hover:border-hondaRed/40 transition">
+                        <div class="h-36 bg-gray-800 relative overflow-hidden">
+                            <img src="https://images.unsplash.com/photo-1558980664-3a031cf67ea8?auto=format&fit=crop&w=500&q=80" alt="Vario 160" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                            <div class="absolute top-2 right-2 bg-black/60 backdrop-blur px-2 py-1 rounded text-[10px] font-semibold">16:9</div>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold text-sm truncate">Vario 160 - Sporty Look</h4>
+                            <p class="text-[11px] text-hondaGray mt-1">Kemarin</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+</body>
+</html>
