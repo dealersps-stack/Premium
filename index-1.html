@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honda Poster Studio</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+tailwind.config={theme:{extend:{colors:{hondaRed:'#f31226',hondaDark:'#0d0f12',hondaCard:'#161920',hondaBorder:'#232731',hondaGray:'#8a92a6'}}}}
+</script>
+<style>.view{display:none}.view.on{display:block}.nav-on{background:#f31226;color:#fff}input[type=color]{width:100%;height:38px;background:none;border:0}</style>
+</head>
+<body class="bg-hondaDark text-white font-sans antialiased flex h-screen overflow-hidden">
+
+<!-- Overlay HP -->
+<div id="ov" class="fixed inset-0 bg-black/60 z-30 hidden md:hidden" onclick="menu(false)"></div>
+
+<!-- SIDEBAR -->
+<aside id="side" class="fixed md:static inset-y-0 left-0 z-40 w-64 bg-hondaDark border-r border-hondaBorder flex flex-col justify-between -translate-x-full md:translate-x-0 transition-transform">
+ <div class="overflow-y-auto">
+  <div class="p-6 flex items-center gap-2 border-b border-hondaBorder/50">
+   <span class="bg-hondaRed px-2 py-0.5 rounded text-sm font-black">HONDA</span>
+   <span class="text-xs uppercase tracking-widest font-semibold">Poster Studio</span>
+  </div>
+  <nav class="p-4 space-y-1" id="nav"></nav>
+ </div>
+ <div class="p-4 m-4 bg-hondaCard border border-hondaBorder rounded-2xl">
+  <p class="text-xs font-semibold mb-3">Dapatkan semua template eksklusif.</p>
+  <button onclick="toast('Akun Premium sudah aktif')" class="w-full py-2 bg-hondaRed rounded-lg text-xs font-bold">Upgrade Sekarang</button>
+ </div>
+</aside>
+
+<main class="flex-1 flex flex-col h-screen overflow-y-auto min-w-0">
+ <header class="h-16 border-b border-hondaBorder px-4 md:px-6 flex items-center justify-between bg-hondaDark/90 backdrop-blur sticky top-0 z-20 shrink-0">
+  <div class="flex items-center gap-3">
+   <button onclick="menu(true)" class="md:hidden text-hondaGray" aria-label="Menu"><i class="fa-solid fa-bars text-xl"></i></button>
+   <span id="crumb" class="font-bold text-sm">Beranda</span>
+  </div>
+  <div class="flex items-center gap-3 relative">
+   <button onclick="el('notif').classList.toggle('hidden')" class="w-9 h-9 rounded-full bg-hondaCard border border-hondaBorder text-hondaGray" aria-label="Notifikasi"><i class="fa-regular fa-bell"></i></button>
+   <div id="notif" class="hidden absolute right-10 top-12 w-64 bg-hondaCard border border-hondaBorder rounded-xl p-3 text-xs text-hondaGray">Belum ada notifikasi baru.</div>
+   <button onclick="go('pengaturan')" class="w-9 h-9 rounded-full bg-gradient-to-tr from-hondaRed to-orange-500 font-bold text-sm">HC</button>
+  </div>
+ </header>
+
+ <div class="p-4 md:p-8 max-w-7xl mx-auto w-full" id="views">
+
+  <!-- BERANDA -->
+  <section class="view" id="v-beranda">
+   <div class="relative bg-gradient-to-r from-[#181216] to-hondaCard border border-hondaBorder rounded-3xl p-6 md:p-8 overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?auto=format&fit=crop&w=800&q=70" alt="" class="absolute right-0 top-0 h-full w-1/2 object-cover opacity-30 pointer-events-none">
+    <div class="relative max-w-xl space-y-4">
+     <span class="inline-block px-3 py-1 rounded-full bg-hondaRed/10 border border-hondaRed/30 text-hondaRed text-xs font-semibold">One HEART.</span>
+     <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">Selamat Datang di Honda Poster Studio</h1>
+     <p class="text-sm text-hondaGray">Buat poster promosi motor Honda yang menarik, profesional dan siap untuk berbagai platform.</p>
+     <div class="flex flex-wrap gap-3 pt-2">
+      <button onclick="go('studio')" class="px-6 py-3 bg-hondaRed rounded-xl text-sm font-bold"><i class="fa-solid fa-plus mr-2"></i>Buat Poster Baru</button>
+      <button onclick="el('tut').classList.remove('hidden')" class="px-6 py-3 bg-hondaCard border border-hondaBorder rounded-xl text-sm font-semibold">Lihat Tutorial</button>
+     </div>
+    </div>
+   </div>
+   <h2 class="text-base font-bold mt-8 mb-4">Mulai dari sini</h2>
+   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    <button onclick="go('studio')" class="text-left bg-hondaCard border border-hondaBorder rounded-2xl p-5"><i class="fa-solid fa-image text-hondaRed text-lg"></i><h3 class="font-bold text-sm mt-3">Desain Poster</h3><p class="text-xs text-hondaGray mt-1">Buat poster dari awal dengan pengaturan lengkap.</p><p class="text-xs font-bold text-hondaRed mt-3">Mulai</p></button>
+    <button onclick="go('prompt')" class="text-left bg-hondaCard border border-hondaBorder rounded-2xl p-5"><i class="fa-solid fa-robot text-hondaRed text-lg"></i><h3 class="font-bold text-sm mt-3">Generator Prompt AI</h3><p class="text-xs text-hondaGray mt-1">Dapatkan ide & prompt kreatif untuk promosi motor.</p><p class="text-xs font-bold text-hondaRed mt-3">Mulai</p></button>
+    <button onclick="go('template')" class="text-left bg-hondaCard border border-hondaBorder rounded-2xl p-5"><i class="fa-solid fa-layer-group text-hondaRed text-lg"></i><h3 class="font-bold text-sm mt-3">Template</h3><p class="text-xs text-hondaGray mt-1">Pilih dari berbagai template profesional.</p><p class="text-xs font-bold text-hondaRed mt-3">Lihat Template</p></button>
+    <button onclick="go('upload')" class="text-left bg-hondaCard border border-hondaBorder rounded-2xl p-5"><i class="fa-solid fa-cloud-arrow-up text-hondaRed text-lg"></i><h3 class="font-bold text-sm mt-3">Upload Motor</h3><p class="text-xs text-hondaGray mt-1">Gunakan foto motor sendiri untuk desain yang lebih personal.</p><p class="text-xs font-bold text-hondaRed mt-3">Upload</p></button>
+   </div>
+   <div class="flex justify-between items-center mt-8 mb-4"><h2 class="text-base font-bold">Proyek Terakhir</h2><button onclick="go('proyek')" class="text-xs text-hondaGray">Lihat Semua</button></div>
+   <div class="grid grid-cols-2 lg:grid-cols-4 gap-4" id="recent"></div>
+  </section>
+
+  <!-- STUDIO DESAIN -->
+  <section class="view" id="v-studio">
+   <div class="grid lg:grid-cols-[320px_1fr] gap-6">
+    <div class="space-y-4 bg-hondaCard border border-hondaBorder rounded-2xl p-5 text-sm">
+     <label class="block">Foto motor<input id="f-img" type="file" accept="image/*" class="block w-full mt-1 text-xs text-hondaGray"></label>
+     <label class="block">Judul<input id="f-t" value="Vario 160 CBS" class="w-full mt-1 bg-hondaDark border border-hondaBorder rounded-lg px-3 py-2"></label>
+     <label class="block">Teks pendukung<input id="f-s" value="Siap melaju, irit dan bertenaga" class="w-full mt-1 bg-hondaDark border border-hondaBorder rounded-lg px-3 py-2"></label>
+     <label class="block">Harga / promo<input id="f-p" value="DP mulai 2 jutaan" class="w-full mt-1 bg-hondaDark border border-hondaBorder rounded-lg px-3 py-2"></label>
+     <label class="block">Kontak<input id="f-c" value="SPS Motor - WA 08xx-xxxx-xxxx" class="w-full mt-1 bg-hondaDark border border-hondaBorder rounded-lg px-3 py-2"></label>
+     <div class="grid grid-cols-2 gap-3">
+      <label>Warna aksen<input id="f-a" type="color" value="#f31226"></label>
+      <label>Ukuran<select id="f-r" class="w-full mt-1 bg-hondaDark border border-hondaBorder rounded-lg px-2 py-2"><option value="1,1">1:1</option><option value="4,5">4:5</option><option value="9,16">9:16</option><option value="16,9">16:9</option></select></label>
+     </div>
+     <button onclick="dl()" class="w-full py-3 bg-hondaRed rounded-xl font-bold"><i class="fa-solid fa-download mr-2"></i>Unduh PNG</button>
+    </div>
+    <div class="bg-hondaCard border border-hondaBorder rounded-2xl p-4 flex justify-center items-start"><canvas id="cv" class="max-w-full max-h-[75vh] rounded-lg" style="width:auto;height:auto"></canvas></div>
+   </div>
+  </section>
+
+  <!-- LAYAR LAIN: placeholder tahap berikutnya -->
+  <section class="view" id="v-other">
+   <div class="bg-hondaCard border border-hondaBorder rounded-2xl p-8 text-center max-w-lg mx-auto">
+    <i id="o-ic" class="fa-solid fa-hammer text-hondaRed text-3xl"></i>
+    <h2 id="o-t" class="font-bold text-lg mt-4"></h2>
+    <p class="text-sm text-hondaGray mt-2">Layar ini dikerjakan di tahap berikutnya. Menu dan tombolnya sudah tersambung.</p>
+    <button onclick="go('beranda')" class="mt-5 px-5 py-2 bg-hondaRed rounded-xl text-sm font-bold">Kembali ke Beranda</button>
+   </div>
+  </section>
+ </div>
+</main>
+
+<!-- Tutorial -->
+<div id="tut" class="hidden fixed inset-0 z-50 bg-black/70 flex items-center justify-center p-4">
+ <div class="bg-hondaCard border border-hondaBorder rounded-2xl p-6 max-w-sm w-full text-sm space-y-2">
+  <h3 class="font-bold text-base">Cara membuat poster</h3>
+  <p>1. Buka Studio Desain.</p><p>2. Upload foto motor dan isi teks.</p><p>3. Pilih ukuran dan warna aksen.</p><p>4. Klik Unduh PNG.</p>
+  <button onclick="el('tut').classList.add('hidden')" class="mt-3 w-full py-2 bg-hondaRed rounded-lg font-bold">Mengerti</button>
+ </div>
+</div>
+<div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-hondaCard border border-hondaBorder px-4 py-2 rounded-lg text-sm"></div>
+
+<script>
+const el=id=>document.getElementById(id);
+const V=[['beranda','Beranda','house'],['studio','Studio Desain','wand-magic-sparkles'],['prompt','Generator Prompt AI','robot'],['template','Template','layer-group'],['upload','Upload Motor & Model','cloud-arrow-up'],['ukuran','Pengaturan Ukuran Poster','crop-simple'],['proyek','Proyek Saya','folder'],['pengaturan','Pengaturan','gear'],['mobile','Tampilan Mobile','mobile-screen']];
+el('nav').innerHTML=V.map(v=>`<button data-v="${v[0]}" onclick="go('${v[0]}')" class="nb w-full flex items-center gap-3 px-4 py-3 rounded-xl text-hondaGray text-left"><i class="fa-solid fa-${v[2]} w-5"></i><span>${v[1]}</span></button>`).join('');
+const P=[['PCX 160 - Modern Lifestyle','1568772585407-9361f9bf3a87','9:16'],['Beat Street - Urban Style','1609630875172-23c21e905814','1:1'],['Scoopy - Fashion & Fun','1558981806-ec527fa84c39','4:5'],['Vario 160 - Sporty Look','1558980664-3a031cf67ea8','16:9']];
+el('recent').innerHTML=P.map(p=>`<button onclick="openProj('${p[0].split(' - ')[0]}')" class="text-left bg-hondaCard border border-hondaBorder rounded-2xl overflow-hidden"><img src="https://images.unsplash.com/photo-${p[1]}?auto=format&fit=crop&w=400&q=60" alt="" class="h-28 w-full object-cover"><div class="p-3"><h4 class="font-bold text-xs truncate">${p[0]}</h4><p class="text-[11px] text-hondaGray">${p[2]}</p></div></button>`).join('');
+function menu(o){el('side').classList.toggle('-translate-x-full',!o);el('ov').classList.toggle('hidden',!o)}
+function toast(t){const e=el('toast');e.textContent=t;e.classList.remove('hidden');setTimeout(()=>e.classList.add('hidden'),2200)}
+function go(id){
+ const known=['beranda','studio'].includes(id);
+ document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));
+ el(known?'v-'+id:'v-other').classList.add('on');
+ const v=V.find(x=>x[0]==id);
+ el('crumb').textContent=v[1];
+ if(!known){el('o-t').textContent=v[1];el('o-ic').className='fa-solid fa-'+v[2]+' text-hondaRed text-3xl'}
+ document.querySelectorAll('.nb').forEach(b=>{const on=b.dataset.v==id;b.classList.toggle('nav-on',on);b.classList.toggle('text-hondaGray',!on)});
+ menu(false);el('notif').classList.add('hidden');el('views').parentElement.scrollTo(0,0);
+ if(id=='studio')draw();
+ history.replaceState(null,'','#'+id);
+}
+function openProj(n){el('f-t').value=n;go('studio')}
+
+/* Studio poster */
+let img=null;
+el('f-img').onchange=e=>{const f=e.target.files[0];if(!f)return;const i=new Image();i.onload=()=>{img=i;draw()};i.src=URL.createObjectURL(f)};
+['f-t','f-s','f-p','f-c','f-a','f-r'].forEach(i=>el(i).oninput=draw);
+function wrap(c,t,x,y,w,lh){const ws=t.split(' ');let l='';for(const w1 of ws){const n=l?l+' '+w1:w1;if(c.measureText(n).width>w&&l){c.fillText(l,x,y);l=w1;y+=lh}else l=n}c.fillText(l,x,y);return y+lh}
+function draw(){
+ const cv=el('cv'),c=cv.getContext('2d'),[a,b]=el('f-r').value.split(',').map(Number);
+ const W=1080,H=Math.round(W*b/a);cv.width=W;cv.height=H;
+ const ac=el('f-a').value,pad=W*0.07,s=Math.min(W,H)/1080;
+ let g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,'#0d0f12');g.addColorStop(1,'#26121a');c.fillStyle=g;c.fillRect(0,0,W,H);
+ c.fillStyle=ac;c.fillRect(0,0,W,16*s);
+ c.fillStyle='#fff';c.font=`800 ${88*s}px sans-serif`;c.textBaseline='top';
+ let y=wrap(c,el('f-t').value,pad,pad+20*s,W-pad*2,100*s);
+ c.fillStyle='#8a92a6';c.font=`${36*s}px sans-serif`;y=wrap(c,el('f-s').value,pad,y+8*s,W-pad*2,46*s);
+ const fy=H-pad-60*s, top=y+20*s, bh=fy-top-110*s;
+ if(img&&bh>50){const r=Math.min((W-pad*2)/img.width,bh/img.height);const w=img.width*r,h=img.height*r;c.drawImage(img,(W-w)/2,top+(bh-h)/2,w,h)}
+ else{c.strokeStyle='#232731';c.setLineDash([12,12]);c.lineWidth=3;c.strokeRect(pad,top,W-pad*2,Math.max(bh,50));c.setLineDash([]);c.fillStyle='#8a92a6';c.textAlign='center';c.font=`${30*s}px sans-serif`;c.fillText('Upload foto motor',W/2,top+Math.max(bh,50)/2-15*s);c.textAlign='left'}
+ const pt=el('f-p').value;c.font=`800 ${46*s}px sans-serif`;const pw=c.measureText(pt).width+60*s,py=fy-100*s;
+ c.fillStyle=ac;c.beginPath();c.roundRect(pad,py,pw,84*s,20*s);c.fill();c.fillStyle='#fff';c.fillText(pt,pad+30*s,py+18*s);
+ c.fillStyle='#8a92a6';c.font=`${32*s}px sans-serif`;c.fillText(el('f-c').value,pad,fy+10*s);
+}
+function dl(){const a=document.createElement('a');a.download='poster-honda.png';a.href=el('cv').toDataURL('image/png');a.click();toast('Poster diunduh')}
+
+go((location.hash||'#beranda').slice(1).replace(/[^a-z]/g,'')&&V.some(v=>v[0]==location.hash.slice(1))?location.hash.slice(1):'beranda');
+</script>
+</body>
+</html>
